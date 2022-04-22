@@ -21,6 +21,8 @@ void TopWidget::paintEvent(QPaintEvent*)
     int startY = SPACE * 2;
     for (int i = 0; i < LINENUM; i++)
     {
+        int startNum = (i == 0) ? 1 : 10;
+        int step = (i == 0) ? 1 : -1;
         for (int j = 0; j < COLNUM; j++)
         {
             painter.drawRect(startX, startY, PLAYERINFOW, PLAYERINFOH);
@@ -31,7 +33,8 @@ void TopWidget::paintEvent(QPaintEvent*)
                              BOMBRECTW, BOMBRECTH);
             painter.drawEllipse(startX + SMALLSPACE, startY + SPACE,
                                 PLAYERIMAGECIRCLED, PLAYERIMAGECIRCLED);
-            painter.drawText(startX + NUMTEXTX, startY + NUMTEXTY, "1号");
+            QString str(QString::number(startNum + step * j) + "号");
+            painter.drawText(startX + NUMTEXTX, startY + NUMTEXTY, str);
             int skillX = startX;
             int skillY = startY + PLAYERIMAGERECTH;
             painter.setBrush(greenBrush);
