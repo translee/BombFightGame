@@ -1,6 +1,14 @@
+/**
+ * @class   BottomWidget
+ * @author  github.com/translee
+ * @date    2022/04/24
+ * @brief   信息显示区
+ * @note
+ * @warning
+*/
+
 #ifndef BOTTOMWIDGET_H
 #define BOTTOMWIDGET_H
-
 #include <QWidget>
 
 class BottomWidget : public QWidget

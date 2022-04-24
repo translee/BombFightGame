@@ -9,7 +9,6 @@
 
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include <string>
 #include <windows.h>
 #include <QMainWindow>
 QT_BEGIN_NAMESPACE
@@ -17,6 +16,8 @@ namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 class TopWidget;
 class BottomWidget;
+class QButtonGroup;
+class GameController;
 
 class MainWindow : public QMainWindow
 {
@@ -26,13 +27,17 @@ public:
     ~MainWindow();
     void addText(const QString& s);
     void updatePipe();
+private slots:
+    void __sendDanmu();
 private:
     Ui::MainWindow *ui;
     TopWidget* m_topWidget;
     BottomWidget* m_bottomWidget;
+    QButtonGroup* m_bg;
     QTimer* m_timer;
     HANDLE h_pipe;
     char* m_rawBytes;
+    GameController* m_control;
 };
 
 #endif // MAINWINDOW_H

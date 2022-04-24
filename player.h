@@ -2,24 +2,29 @@
  * @class   Player
  * @author  github.com/translee
  * @date    2022/04/21
- * @brief   玩家基类
+ * @brief   玩家类
  * @note
  * @warning
 */
 
 #ifndef PLAYER_H
 #define PLAYER_H
-class QPixmap;
+#include <QPixmap>
+#include <queue>
 class QPainter;
 
 class Player
 {
 public:
-    Player();
-    int getNumber() const { return m_nNumber; }
+    explicit Player(int uid);
+    inline int getNumber() const { return m_nNumber; }
+    inline void setNumber(int n) { m_nNumber = n; }
+    inline QPixmap getImage() const { return m_image; }
 private:
     int m_nNumber;
-    QPixmap* m_image;
+    int m_nUid;
+    QPixmap m_image;
+    std::queue<int> m_qSkills;
 };
 
 #endif // PLAYER_H

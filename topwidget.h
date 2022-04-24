@@ -1,5 +1,5 @@
 /**
- * @class   DisplayWidget
+ * @class   TopWidget
  * @author  github.com/translee
  * @date    2022/04/19
  * @brief   游戏显示区
@@ -19,7 +19,7 @@ public:
     explicit TopWidget(QWidget *parent = nullptr);
     virtual void paintEvent(QPaintEvent*) override;
 private:
-    void __drawPlayerInfo(QPainter*, int x, int y);
+    void __drawStaticBorder(QPainter* painter);
 };
 
 #endif // DISPLAYWIDGET_H

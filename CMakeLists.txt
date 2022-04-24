@@ -21,19 +21,18 @@ set(PROJECT_SOURCES
         mainwindow.ui
         topwidget.h
         topwidget.cpp
-        constDef.h
+        constdef.h
         bottomwidget.h
         bottomwidget.cpp
         player.h
         player.cpp
-        humanplayer.h
-        humanplayer.cpp
-        emptyplayer.h
-        emptyplayer.cpp
         gameutil.h
         gameutil.cpp
         playermanager.h
         playermanager.cpp
+        gamecontroller.h
+        gamecontroller.cpp
+        ImageRes.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

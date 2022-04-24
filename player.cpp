@@ -5,8 +5,10 @@
 #include "constDef.h"
 using namespace constDef;
 
-Player::Player()
+Player::Player(int uid)
     : m_nNumber(1)
-    , m_image(new QPixmap)
+    , m_nUid(uid)
+    , m_image(GameUtil::loadPixmap(":Image/userImage/" + QString::number(uid) + ".png"))
+    , m_qSkills()
 {
 }

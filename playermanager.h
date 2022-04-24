@@ -9,30 +9,27 @@
 
 #ifndef PLAYERMANAGER_H
 #define PLAYERMANAGER_H
-#include <array>
 #include <set>
 #include <QString>
 #include "player.h"
 
-struct playerComp {
-    bool operator() (const Player* lhs, const Player* rhs) const{
-        return (*lhs).getNumber() < (*rhs).getNumber();
-    }
-};
-
 class PlayerManager final
 {
 public:
+    using PlayerPtr = std::shared_ptr<Player>;
     static PlayerManager& getInstance();
     PlayerManager(const PlayerManager&)=delete;
     PlayerManager& operator=(const PlayerManager&)=delete;
-    //~PlayerManager();
-    void addPlayer(const QString& s);
+    ~PlayerManager()=default;
+    bool addPlayer(int uid);
+    inline size_t aliveSize() const { return m_mpAllPlayer.size(); }
+    bool ifPlayerExist(int uid) const;
+    void drawAllPlayerImage(QPainter* painter) const;
+    //PlayerPtr getPlayerByUid(int uid);
 private:
     PlayerManager();
 private:
-    std::array<Player*, 10> m_arrAllPlayer;
-    std::set<Player*, playerComp> m_setAlivePlayer;
+    std::map<int, PlayerPtr> m_mpAllPlayer;
 };
 
 #endif // PLAYERMANAGER_H

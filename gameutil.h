@@ -10,11 +10,15 @@
 #ifndef GAMEUTIL_H
 #define GAMEUTIL_H
 #include <QPoint>
+#include <QPixmap>
 
 class GameUtil
 {
 public:
-    static QPoint getPointByNumber(int index);
+    static QPoint getImagePointByNum(int index);
+    static QPixmap loadPixmap(const QString& path);
+private:
+    static QPoint __getPointByNum(int index);
 };
 
 #endif // GAMEUTIL_H

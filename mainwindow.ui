@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>779</width>
-    <height>664</height>
+    <height>671</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,15 +23,15 @@
       <height>341</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="mainLayout"/>
+    <layout class="QVBoxLayout" name="topLayout"/>
    </widget>
    <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>30</x>
       <y>580</y>
-      <width>541</width>
-      <height>71</height>
+      <width>431</width>
+      <height>81</height>
      </rect>
     </property>
    </widget>
@@ -44,20 +44,79 @@
       <height>231</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout"/>
+    <layout class="QVBoxLayout" name="downLayout"/>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>10</x>
       <y>580</y>
-      <width>53</width>
-      <height>16</height>
+      <width>21</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>测试用</string>
+     <string>测
+试
+用</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>580</y>
+      <width>300</width>
+      <height>79</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="2">
+      <widget class="QRadioButton" name="radioButton_3">
+       <property name="text">
+        <string>玩家C</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QRadioButton" name="radioButton_2">
+       <property name="text">
+        <string>玩家B</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QRadioButton" name="radioButton_1">
+       <property name="text">
+        <string>玩家A</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QRadioButton" name="radioButton_4">
+       <property name="text">
+        <string>玩家D</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0" colspan="4">
+      <widget class="QLineEdit" name="lineEdit"/>
+     </item>
+     <item row="3" column="2" colspan="2">
+      <widget class="QPushButton" name="startButton">
+       <property name="text">
+        <string>开始游戏</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QPushButton" name="sendButton">
+       <property name="text">
+        <string>发送弹幕</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
