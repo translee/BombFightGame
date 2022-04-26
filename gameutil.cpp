@@ -4,7 +4,7 @@
 #include "constDef.h"
 using namespace constDef;
 
-QPoint GameUtil::__getPointByNum(int index)
+QPoint GameUtil::getBasePtByNum(int index)
 {
     int x = SPACE * 2;
     int y = SPACE * 2;
@@ -20,11 +20,19 @@ QPoint GameUtil::__getPointByNum(int index)
     return QPoint(x, y);
 }
 
-QPoint GameUtil::getImagePointByNum(int index)
+QPoint GameUtil::getImagePtByBasePt(const QPoint& base)
 {
-    QPoint pos = __getPointByNum(index);
+    QPoint pos = base;
     pos.rx() += SMALLSPACE;
     pos.ry() += SPACE;
+    return pos;
+}
+
+QPoint GameUtil::getSkillPtByBasePt(const QPoint& base)
+{
+    QPoint pos = base;
+    pos.rx() += 5;
+    pos.ry() += PLAYERINFOH - 10;
     return pos;
 }
 

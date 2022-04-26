@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include "./ui_mainwindow.h"
 #include "topwidget.h"
+#include "tipwidget.h"
 #include "bottomwidget.h"
 #include "playermanager.h"
 #include "gamecontroller.h"
@@ -15,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , m_topWidget(new TopWidget)
+    , m_tipWidget(new TipWidget)
     , m_bottomWidget(new BottomWidget)
     , m_bg(new QButtonGroup)
     , m_timer(new QTimer)
@@ -23,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->topLayout->addWidget(m_topWidget);
+    ui->tipLayout->addWidget(m_tipWidget);
     ui->downLayout->addWidget(m_bottomWidget);
     m_bg->addButton(ui->radioButton_1, 0);
     m_bg->addButton(ui->radioButton_2, 1);
@@ -41,9 +44,6 @@ MainWindow::MainWindow(QWidget *parent)
     ::ConnectNamedPipe(h_pipe, nullptr);
     m_timer->start(200);
     connect(m_timer, &QTimer::timeout, this, &MainWindow::updatePipe);
-    connect(m_timer, &QTimer::timeout, this, [this]{
-        update();
-    });
     connect(ui->sendButton, &QPushButton::clicked, this,
             &MainWindow::__sendDanmu);
 }

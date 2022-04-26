@@ -3,15 +3,13 @@
 #include <QPainter>
 #include <QPixmap>
 #include "gameutil.h"
+#include "constdef.h"
+using namespace constDef;
 
 PlayerManager &PlayerManager::getInstance()
 {
     static PlayerManager m_sPlayerManager;
     return m_sPlayerManager;
-}
-
-PlayerManager::PlayerManager()
-{
 }
 
 bool PlayerManager::addPlayer(int uid)
@@ -20,8 +18,19 @@ bool PlayerManager::addPlayer(int uid)
     if (m_mpAllPlayer.size() >= 10)
         return false;
     PlayerPtr pNewPl(new Player(uid));
-    pNewPl->setNumber(nSize + 1);
+    pNewPl->m_nNumber = nSize + 1;
     m_mpAllPlayer.insert({uid, pNewPl});
+    return true;
+}
+
+bool PlayerManager::addSkill(int uid, int skill)
+{
+    if (m_mpAllPlayer[uid]->m_deqSkills.size() < 5)
+    {
+        m_mpAllPlayer[uid]->m_deqSkills.emplace_back(skill);
+        return true;
+    }
+    return false;
 }
 
 bool PlayerManager::ifPlayerExist(int uid) const
@@ -33,7 +42,16 @@ void PlayerManager::drawAllPlayerImage(QPainter *painter) const
 {
     for (const auto& pl : m_mpAllPlayer)
     {
-        QPoint pos = GameUtil::getImagePointByNum(pl.second->getNumber());
-        painter->drawPixmap(pos, pl.second->getImage());
+        QPoint basePt = GameUtil::getBasePtByNum(pl.second->m_nNumber);
+        QPoint imagePos = GameUtil::getImagePtByBasePt(basePt);
+        QPoint skillPos = GameUtil::getSkillPtByBasePt(basePt);
+        painter->drawPixmap(imagePos, pl.second->m_image);
+        painter->setPen(QPen(Qt::black));
+        for (const auto& skill : pl.second->m_deqSkills)
+        {
+            QString str("#" + QString::number(skill));
+            painter->drawText(skillPos, str);
+            skillPos.rx() += SKILLRECTW;
+        }
     }
 }

@@ -1,5 +1,6 @@
 #include "topwidget.h"
 #include <QPainter>
+#include <QTimer>
 #include "playermanager.h"
 #include "gameutil.h"
 #include "constDef.h"
@@ -7,7 +8,10 @@ using namespace constDef;
 
 TopWidget::TopWidget(QWidget *parent)
     : QWidget{parent}
+    , m_timer(new QTimer(this))
 {
+    m_timer->start(200);
+    connect(m_timer, &QTimer::timeout, this, [this]{ this->update();});
 }
 
 void TopWidget::paintEvent(QPaintEvent*)

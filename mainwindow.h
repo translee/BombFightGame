@@ -15,6 +15,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 class TopWidget;
+class TipWidget;
 class BottomWidget;
 class QButtonGroup;
 class GameController;
@@ -32,6 +33,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     TopWidget* m_topWidget;
+    TipWidget* m_tipWidget;
     BottomWidget* m_bottomWidget;
     QButtonGroup* m_bg;
     QTimer* m_timer;

@@ -1,12 +1,15 @@
 #include "bottomwidget.h"
 #include <QPainter>
+#include <QTimer>
 #include "constDef.h"
 using namespace constDef;
 
 BottomWidget::BottomWidget(QWidget *parent)
     : QWidget{parent}
+    , m_timer(new QTimer(this))
 {
-
+    m_timer->start(200);
+    connect(m_timer, &QTimer::timeout, this, [this]{ this->update();});
 }
 
 void BottomWidget::paintEvent(QPaintEvent*)

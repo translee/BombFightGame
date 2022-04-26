@@ -32,6 +32,8 @@ set(PROJECT_SOURCES
         playermanager.cpp
         gamecontroller.h
         gamecontroller.cpp
+        tipwidget.h
+        tipwidget.cpp
         ImageRes.qrc
 )
 

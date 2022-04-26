@@ -22,12 +22,12 @@ public:
     PlayerManager& operator=(const PlayerManager&)=delete;
     ~PlayerManager()=default;
     bool addPlayer(int uid);
-    inline size_t aliveSize() const { return m_mpAllPlayer.size(); }
+    bool addSkill(int uid, int skill);
+//    inline size_t aliveSize() const { return m_mpAllPlayer.size(); }
     bool ifPlayerExist(int uid) const;
     void drawAllPlayerImage(QPainter* painter) const;
-    //PlayerPtr getPlayerByUid(int uid);
 private:
-    PlayerManager();
+    PlayerManager()=default;
 private:
     std::map<int, PlayerPtr> m_mpAllPlayer;
 };

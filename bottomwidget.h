@@ -16,7 +16,10 @@ class BottomWidget : public QWidget
     Q_OBJECT
 public:
     explicit BottomWidget(QWidget *parent = nullptr);
+protected:
     virtual void paintEvent(QPaintEvent*) override;
+private:
+    QTimer* m_timer;
 };
 
 #endif // BOTTOMWIDGET_H

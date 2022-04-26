@@ -15,10 +15,10 @@
 class GameUtil
 {
 public:
-    static QPoint getImagePointByNum(int index);
+    static QPoint getBasePtByNum(int index);
+    static QPoint getImagePtByBasePt(const QPoint& base);
+    static QPoint getSkillPtByBasePt(const QPoint& base);
     static QPixmap loadPixmap(const QString& path);
-private:
-    static QPoint __getPointByNum(int index);
 };
 
 #endif // GAMEUTIL_H

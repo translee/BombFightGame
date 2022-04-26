@@ -17,9 +17,12 @@ class TopWidget : public QWidget
     Q_OBJECT
 public:
     explicit TopWidget(QWidget *parent = nullptr);
+protected:
     virtual void paintEvent(QPaintEvent*) override;
 private:
     void __drawStaticBorder(QPainter* painter);
+private:
+    QTimer* m_timer;
 };
 
 #endif // DISPLAYWIDGET_H

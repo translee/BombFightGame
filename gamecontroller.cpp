@@ -1,10 +1,10 @@
 #include "gamecontroller.h"
+#include <QRegularExpression>
 #include "playermanager.h"
 
 GameController::GameController()
     : m_status(GameStatus::WAIT)
 {
-
 }
 
 void GameController::solveDanmu(int uid, QString s)
@@ -13,7 +13,13 @@ void GameController::solveDanmu(int uid, QString s)
     {
         if (PlayerManager::getInstance().ifPlayerExist(uid))
         {
-            ;
+            QRegularExpression re("#(\\d{1,2})");
+            QRegularExpressionMatch match = re.match(s);
+            if (match.hasMatch())
+            {
+                PlayerManager::getInstance().addSkill(uid,
+                               match.captured(1).toInt());
+            }
         }
         else if ("加入" == s)
             PlayerManager::getInstance().addPlayer(uid);
@@ -26,4 +32,5 @@ void GameController::solveDanmu(int uid, QString s)
     {
         return;
     }
+    return;
 }
