@@ -10,8 +10,8 @@ TipWidget::TipWidget(QWidget *parent)
             "#4 何时爆炸 5s后爆炸 | "
             "#5	无中生弹 (时效性技能，当炸弹数量达到2个时,此技能失效) "
             "玩家可以自己安塞炸弹进入游戏中传递 | "
-            "#6	正向	回归正常传递顺序 | "
-            "#7	逆向	逆时针顺序传递 | ")
+            "#6 正向 回归正常传递顺序 | "
+            "#7 逆向 逆时针顺序传递 | ")
     , m_font(new QFont("微软雅黑", 10))
     , m_timer(new QTimer(this))
     , m_nStrWidth(QFontMetrics(*m_font).boundingRect(m_tip).width())
