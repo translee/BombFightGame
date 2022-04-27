@@ -19,6 +19,7 @@ public:
     static QPoint getImagePtByBasePt(const QPoint& base);
     static QPoint getSkillPtByBasePt(const QPoint& base);
     static QPixmap loadPixmap(const QString& path);
+    static QPixmap loadBombPixmap();
 };
 
 #endif // GAMEUTIL_H

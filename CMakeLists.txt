@@ -34,6 +34,10 @@ set(PROJECT_SOURCES
         gamecontroller.cpp
         tipwidget.h
         tipwidget.cpp
+        bomb.h
+        bomb.cpp
+        bombmanager.h
+        bombmanager.cpp
         ImageRes.qrc
 )
 

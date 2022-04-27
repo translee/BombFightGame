@@ -16,7 +16,7 @@ class TipWidget : public QWidget
     Q_OBJECT
 public:
     explicit TipWidget(QWidget *parent = nullptr);
-    ~TipWidget();
+    virtual ~TipWidget();
 protected:
     virtual void paintEvent(QPaintEvent*) override;
 private:

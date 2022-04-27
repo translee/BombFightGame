@@ -2,7 +2,7 @@
 #include <QPixmap>
 #include <QPainter>
 #include "gameutil.h"
-#include "constDef.h"
+#include "constdef.h"
 using namespace constDef;
 
 Player::Player(int uid)
@@ -10,5 +10,14 @@ Player::Player(int uid)
     , m_nUid(uid)
     , m_image(GameUtil::loadPixmap(":Image/userImage/" + QString::number(uid) + ".png"))
     , m_deqSkills()
+    , m_bDead(false)
 {
+}
+
+QPixmap Player::getImage() const
+{
+    if (m_bDead)
+        return QPixmap();
+    else
+        return m_image;
 }

@@ -25,11 +25,12 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 public:
     MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    virtual ~MainWindow();
     void addText(const QString& s);
     void updatePipe();
 private slots:
     void __sendDanmu();
+    void __startGame();
 private:
     Ui::MainWindow *ui;
     TopWidget* m_topWidget;

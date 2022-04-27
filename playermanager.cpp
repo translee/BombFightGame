@@ -19,6 +19,7 @@ bool PlayerManager::addPlayer(int uid)
         return false;
     PlayerPtr pNewPl(new Player(uid));
     pNewPl->m_nNumber = nSize + 1;
+    m_mpPosToUid[nSize + 1] = uid;
     m_mpAllPlayer.insert({uid, pNewPl});
     return true;
 }
@@ -45,7 +46,7 @@ void PlayerManager::drawAllPlayerImage(QPainter *painter) const
         QPoint basePt = GameUtil::getBasePtByNum(pl.second->m_nNumber);
         QPoint imagePos = GameUtil::getImagePtByBasePt(basePt);
         QPoint skillPos = GameUtil::getSkillPtByBasePt(basePt);
-        painter->drawPixmap(imagePos, pl.second->m_image);
+        painter->drawPixmap(imagePos, pl.second->getImage());
         painter->setPen(QPen(Qt::black));
         for (const auto& skill : pl.second->m_deqSkills)
         {
@@ -54,4 +55,20 @@ void PlayerManager::drawAllPlayerImage(QPainter *painter) const
             skillPos.rx() += SKILLRECTW;
         }
     }
+}
+
+std::set<int> PlayerManager::getAlivePos() const
+{
+    std::set<int> s;
+    for (const auto& pl : m_mpAllPlayer)
+    {
+        if (!pl.second->m_bDead)
+            s.insert(pl.second->m_nNumber);
+    }
+    return s;
+}
+
+void PlayerManager::killPlayer(int i)
+{
+    m_mpAllPlayer[m_mpPosToUid[i]]->m_bDead = true;
 }

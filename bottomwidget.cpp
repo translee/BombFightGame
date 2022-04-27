@@ -1,7 +1,8 @@
 #include "bottomwidget.h"
 #include <QPainter>
 #include <QTimer>
-#include "constDef.h"
+#include "bombmanager.h"
+#include "constdef.h"
 using namespace constDef;
 
 BottomWidget::BottomWidget(QWidget *parent)
@@ -18,4 +19,5 @@ void BottomWidget::paintEvent(QPaintEvent*)
     painter.setRenderHints(QPainter::Antialiasing);
     painter.setPen(QPen(BORDERRED, 2, Qt::SolidLine));
     painter.drawRect(SPACE, SPACE, BOTTOMRECTW, BOTTOMRECTH);
+    BombManager::getInstance().drawAllBombTime(&painter);
 }

@@ -1,7 +1,7 @@
 #include "gameutil.h"
 #include <QPainter>
 #include <QPainterPath>
-#include "constDef.h"
+#include "constdef.h"
 using namespace constDef;
 
 QPoint GameUtil::getBasePtByNum(int index)
@@ -53,6 +53,24 @@ QPixmap GameUtil::loadPixmap(const QString& path)
     painter.setClipPath(paintPath);
     painter.drawPixmap(rect, rawPixmap.scaled(PLAYERIMAGECIRCLED,
                        PLAYERIMAGECIRCLED, Qt::IgnoreAspectRatio,
+                                       Qt::SmoothTransformation));
+    return pixmap;
+}
+
+QPixmap GameUtil::loadBombPixmap()
+{
+    QPixmap rawPixmap(":Image/staticImage/bomb.jpg");
+    if (rawPixmap.isNull())
+        return QPixmap();
+
+    QPixmap pixmap(BOMBRECTH, BOMBRECTW);
+    pixmap.fill(Qt::transparent);
+    QPainter painter(&pixmap);
+    painter.setRenderHints(QPainter::Antialiasing |
+                           QPainter::SmoothPixmapTransform);
+    QRect rect(0, 0, BOMBRECTH, BOMBRECTW);
+    painter.drawPixmap(rect, rawPixmap.scaled(BOMBRECTH,
+                       BOMBRECTW, Qt::IgnoreAspectRatio,
                                        Qt::SmoothTransformation));
     return pixmap;
 }

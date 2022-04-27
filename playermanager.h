@@ -16,20 +16,21 @@
 class PlayerManager final
 {
 public:
-    using PlayerPtr = std::shared_ptr<Player>;
     static PlayerManager& getInstance();
     PlayerManager(const PlayerManager&)=delete;
     PlayerManager& operator=(const PlayerManager&)=delete;
     ~PlayerManager()=default;
     bool addPlayer(int uid);
     bool addSkill(int uid, int skill);
-//    inline size_t aliveSize() const { return m_mpAllPlayer.size(); }
     bool ifPlayerExist(int uid) const;
     void drawAllPlayerImage(QPainter* painter) const;
+    std::set<int> getAlivePos() const;
+    void killPlayer(int i);
 private:
     PlayerManager()=default;
 private:
     std::map<int, PlayerPtr> m_mpAllPlayer;
+    std::map<int, int> m_mpPosToUid;
 };
 
 #endif // PLAYERMANAGER_H

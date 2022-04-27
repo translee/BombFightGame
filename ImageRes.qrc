@@ -4,5 +4,6 @@
         <file>userImage/124.png</file>
         <file>userImage/125.png</file>
         <file>userImage/126.png</file>
+        <file>staticImage/bomb.jpg</file>
     </qresource>
 </RCC>

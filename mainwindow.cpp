@@ -9,7 +9,7 @@
 #include "bottomwidget.h"
 #include "playermanager.h"
 #include "gamecontroller.h"
-#include "constDef.h"
+#include "constdef.h"
 using namespace constDef;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -46,6 +46,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_timer, &QTimer::timeout, this, &MainWindow::updatePipe);
     connect(ui->sendButton, &QPushButton::clicked, this,
             &MainWindow::__sendDanmu);
+    connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::__startGame);
 }
 
 MainWindow::~MainWindow()
@@ -74,5 +75,10 @@ void MainWindow::updatePipe()
 void MainWindow::__sendDanmu()
 {
     m_control->solveDanmu(m_bg->checkedId() + 123, ui->lineEdit->text());
+}
+
+void MainWindow::__startGame()
+{
+    m_control->startGame();
 }
 

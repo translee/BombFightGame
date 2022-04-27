@@ -2,8 +2,9 @@
 #include <QPainter>
 #include <QTimer>
 #include "playermanager.h"
+#include "bombmanager.h"
 #include "gameutil.h"
-#include "constDef.h"
+#include "constdef.h"
 using namespace constDef;
 
 TopWidget::TopWidget(QWidget *parent)
@@ -18,8 +19,9 @@ void TopWidget::paintEvent(QPaintEvent*)
 {
     QPainter painter(this);
     painter.setRenderHints(QPainter::Antialiasing);
-    __drawStaticBorder(&painter);
     PlayerManager::getInstance().drawAllPlayerImage(&painter);
+    BombManager::getInstance().drawAllBombImage(&painter);
+    __drawStaticBorder(&painter);
 }
 
 void TopWidget::__drawStaticBorder(QPainter *painter)
