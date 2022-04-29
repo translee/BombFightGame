@@ -54,5 +54,6 @@ void GameController::startGame()
 
 void GameController::__runGame()
 {
-    BombManager::getInstance().nextMoment();
+    if (BombManager::getInstance().nextMoment())
+        m_timer->stop();
 }

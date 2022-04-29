@@ -22,7 +22,7 @@ public:
     bool addBomb();
     void drawAllBombImage(QPainter* painter);
     void drawAllBombTime(QPainter* painter);
-    void nextMoment();
+    bool nextMoment();
 private:
     BombManager()=default;
 private:

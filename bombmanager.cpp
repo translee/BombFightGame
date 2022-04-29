@@ -41,15 +41,19 @@ void BombManager::drawAllBombTime(QPainter *painter)
     }
 }
 
-void BombManager::nextMoment()
+bool BombManager::nextMoment()
 {
+    bool isExplodeMoment = false;
     for (const auto& bm : m_vecBombs)
     {
         bm->moveNext();
         if (0 == bm->m_nExplode)
         {
             PlayerManager::getInstance().killPlayer(bm->m_nPosNum);
-            bm->m_nExplode = 10;
+//            bm->m_nExplode = 10;
+            isExplodeMoment = true;
         }
     }
+    return isExplodeMoment;
 }
+

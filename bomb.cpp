@@ -9,7 +9,7 @@ Bomb::Bomb()
     , m_nPosNum(1)
     , m_nMoveOnceByTimes(1)
     , m_nCurProcess(0)
-    , m_nExplode(10)
+    , m_nExplode(3)
 {
 }
 

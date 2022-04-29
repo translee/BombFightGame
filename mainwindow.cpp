@@ -35,6 +35,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->textBrowser->moveCursor(QTextCursor::MoveOperation::End);
     this->setWindowTitle("炸弹大乱斗");
     this->setFixedSize(this->width(),this->height());
+    ui->lineEdit->setText("加入");
+    auto io = this->palette().base().color();
+    int* r=new int,*g=new int,*b=new int;
+    io.getRgb(r,g,b);
     // 创建命名管道,消息只能从客户端流向服务器,读写数据采用非阻塞模式,
     // 字节流形式,超时值置为0表示采用默认的50毫秒
     h_pipe = ::CreateNamedPipe(L"\\\\.\\pipe\\MyPipe", PIPE_ACCESS_INBOUND,
